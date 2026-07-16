@@ -6,8 +6,8 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
     <meta name="description" content="tags" />
     <meta name="hexo-theme-A4" content="v2.0.1" />
-    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
-    <title>Varka&#39;s Blog | Varka</title>
+    <link rel="alternate icon" type="image/webp" href="/img/icon.png">
+    <title>tags | Varka&#39;s Blog | Varka</title>
 
     
         
@@ -190,7 +190,19 @@
                 height: auto;
                 object-fit: cover; /* 保持图片比例 */
                 transition: transform 0.3s ease-in-out; 
-                border-radius: 0; 
+                border-radius: 50%; 
+            }
+            
+            .header-img:hover {
+                animation: rotateAnimation 2s linear infinite; /* 悬停旋转动画 */
+            }
+            @keyframes rotateAnimation {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
             }
             
         </style>
@@ -198,7 +210,7 @@
             alt="^-^" 
             cache-control="max-age=86400" 
             class="header-img" 
-            src="/img/favicon.webp" 
+            src="/img/icon.png" 
         />
         <div class="header-content">
             <a class="logo" href="/">Varka&#39;s Blog</a> 
