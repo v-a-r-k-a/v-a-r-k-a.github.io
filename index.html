@@ -73,6 +73,11 @@
 
     
     
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
 
     
     
@@ -86,6 +91,12 @@
 
 
 
+
+    <style>
+        .archive-main a:hover {
+            text-decoration: none; 
+        }
+    </style>
 
     
     
@@ -167,6 +178,13 @@
                     <!-- 这个header就是特指index的头部 -->
 
 
+    <div class="index-header-line" >
+        
+            <span id="quote"></span>
+            <script src="/js/hitokoto.js" ></script>
+        
+    </div>
+
 
     <div style="text-align: left;">
 
@@ -197,6 +215,111 @@
     
 </div>
                     
+                        <div class="archive-list">
+  <ul class="archive">
+      
+
+      <!--文章先按照时间排好序-->
+      
+
+
+      
+      
+
+      
+
+      
+      
+      
+
+      <!--循环遍历文章数组-->
+      
+
+      <!--排序 置顶 文章-->
+      
+
+      <!--先放 置顶 文章-->
+      
+
+      <!--rough-notation风格效果-->
+      
+        <script src="/js/roughNotation.js" defer></script>
+        <script>
+          // 浏览器严格模式
+          if (typeof window !== 'undefined') {
+            window.themeConfig = {"menu":{"首页":"/","文章":"/list/"},"showInMenu":["文章","关于","标签","分类"],"index":{"header":["我忘明月很久，明月始终望我","人山人海，人来人往","看过大海的人不会忘记海的广阔"],"hitokoto":true,"footer":"我不会告诉你任何事啊啊啊啊","titlePosition":"left","width":"middle","list":true},"footerLink":{"info":"© 1949-2026 China"},"post":{"footer":"🌊看过大海的人不会忘记海的广阔🌊","themeInfo":true,"width":"middle","titlePosition":"center"},"favicon":"/img/favicon.webp","isRoundedAvatar":false,"isAvatarRotating":false,"displayTitleInTab":false,"tool":{"darkMode":true,"returnToTop":true,"returnToLast":true,"topToc":true,"leftToc":true,"recentUpdatePost":false},"indexInfo":{"allWordCount":true,"allViewCount":true},"postInfo":{"updateDate":true,"wordCount":true,"readTime":true,"viewCount":true,"prevAndNextLink":{"status":true,"prevInfo":"Last Post","nextInfo":"Next Post"},"endContent":"以上"},"listInfo":{"enable":true,"hoverStyle":"underline","hoverColor":"#4f7dde","animationDuration":800},"cdn":{"enable":false,"choose":"zzko"},"color":{"enable":false,"font":"#9e5345","background":"#e8e0c9","indexBackGround":"#efeae2","postBackGround":"#efeae2","codeBackGround":"#e8e0c9","codeFont":"#2e5041","linkBeforeClick":"#2e5041","linkAfterClick":"#9c9caf"},"imageShow":{"enable":false,"background":"/img/favicon.webp"},"font":{"enable":false,"LXGWWenKai":true},"lightgallery":{"thumbnail":true,"zoom":true,"rotate":true,"autoplay":true,"fullScreen":true,"pager":"ture"},"comment":{"enable":true,"use":"waline","waline":{"serverUrl":null,"lang":"zh-CN","placeholder":"留下你的评论吧。"},"twikoo":{"envId":null,"region":null,"lang":null},"giscus":{"dataRepo":null,"dataRepoId":null,"dataCategory":null,"dataCategoryId":null,"dataMapping":"pathname","dataTerm":null,"dataStrict":"0","dataReactionsEnabled":"1","dataEmitMetadata":"0","dataInputPosition":"bottom","dataTheme":"preferred_color_scheme","dataLang":"zh-CN","dataLoading":null,"crossorigin":"anonymous","async":true},"artalk":{"server":null}},"inject":{"css":"css/custom.css"},"baseElement":{"href":null,"target":null},"version":"v2.0.1"};
+          }
+          document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.archive-title').forEach(el => {
+              const annotation = RoughNotation.annotate(el, {
+                type: themeConfig?.tool?.hoverStyle || 'underline', // 效果,默认为'underline'
+                color: themeConfig?.tool?.hoverColor || '#4f7dde', // 自定义效果颜色
+                animationDuration: themeConfig?.tool?.animationDuration || 800, // 动画持续时间ms
+              });
+              el.addEventListener('mouseenter', () => {
+                if(annotation){
+                annotation.show();
+            }});
+              el.addEventListener('mouseleave', () => {
+                if(annotation){
+                annotation.hide();
+            }});
+            });
+          });
+        </script>
+        
+
+      <!--文章先按照时间排好序-->
+      
+      
+      <!--再放 最近更新 文章-->
+      
+
+      <!--后放 其他 文章-->
+      
+        
+        <li>
+          <span class="year-font-color">2026[3]
+             <span class="darkmode-ignore">🍃</span> 
+          </span>
+        </li>
+        
+        
+          
+          <li>
+            <span class="archive-date">&nbsp;&nbsp;&nbsp;07/16 
+            </span>
+            <div class="archive-main">
+              
+                <a class="archive-title" href="/2026/07/16/%E7%A9%BA%E6%B0%97%E4%B8%AD%E3%80%81%E8%A1%8C%E3%81%8F%E3%82%88/">空気中、行くよ</a>
+            </div>
+          </li>
+        
+          
+          <li>
+            <span class="archive-date">&nbsp;&nbsp;&nbsp;06/13 
+            </span>
+            <div class="archive-main">
+              
+                <a class="archive-title" href="/2026/06/13/interesting/">interesting</a>
+            </div>
+          </li>
+        
+          
+          <li>
+            <span class="archive-date">&nbsp;&nbsp;&nbsp;06/08 
+            </span>
+            <div class="archive-main">
+              
+                <a class="archive-title" href="/2026/06/08/hello-world/">Hello World</a>
+            </div>
+          </li>
+        
+      
+  </ul>
+</div>
+<!--  -->
+                    
                     <div class="footer">
     
 </div>
@@ -223,8 +346,7 @@
     
          
             
-                
-                <span class="index-footer-last-span">Email:<a href="mailto:123456789@gmail.com" title="123456789@gmail.com">123456789@gmail.com</a></span>
+                <span class="index-footer-last-span">我不会告诉你任何事啊啊啊啊</span>
             
         
     
@@ -300,7 +422,7 @@
             rotate: true,             // 启用旋转功能能
             autoplay: true,        // 启用自动播放功能
             fullScreen: true,      // 启用全屏功能
-            pager: false, //页码,
+            pager: ture, //页码,
             zoomFromOrigin: true,   // 从原始位置缩放
             actualSize: true,       // 启用查看实际大小的功能
             enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
