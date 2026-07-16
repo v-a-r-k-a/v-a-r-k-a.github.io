@@ -1,304 +1,267 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    
-    <meta name="renderer" content="webkit"/>
-    <meta name="force-rendering" content="webkit"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
-    
-    
-        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Regular.woff2" as="font">
-        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Bold.woff2" as="font">
-    
-    
-    
-        <link rel="shortcut icon" href="/icons/favicon.ico">
-    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="interesting" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Varka&#39;s Blog | Varka</title>
 
-    
     
         
-<link rel="stylesheet" href="/css/mdui.min.v1.0.0.css">
+<link rel="stylesheet" href="/css/highlight/style1.css">
 
-    
-    
-<link rel="stylesheet" href="/css/main.css">
-<link rel="stylesheet" href="/css/iconfont.css">
-
-
-    
-    
-
-    
-        <script data-ad-client="ca-" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-          
-
-
-    
-    
-    <title>
         
-            interesting | Varka&#39;s Blog
+<link rel="stylesheet" href="/css/reset.css">
+
         
-    </title>
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+
+         <!--注意：首页既不是post也不是page-->
+        
+
+        
+<link rel="stylesheet" href="/css/ui.css">
+
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
     
+
     
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
 <meta name="generator" content="Hexo 8.1.2"></head>
-<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
-  
-  <header class="mdui-appbar mdui-appbar-fixed">
-  <div id="toolbar" class="mdui-toolbar mdui-color-theme">
-    <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
-    <a href="/" class="mdui-typo-headline">Varka&#39;s Blog</a>
-    <a href="/" class="header-subtitle mdui-typo-headline">Varka</a>
-    <div class="mdui-toolbar-spacer"></div>
-    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
-  </div>
-</header>
 
-<div class="mdui-dialog" id="search">
-  
-    <div class="search-form">
-      <input type="search" class="search-form-input" placeholder="请输入关键字" onfocus="listenSearchFunc()">
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">Varka&#39;s Blog</a> 
+            <span class="description">nope.</span> 
+        </div>
     </div>
-    <div class="search-result" data-resource="/search.xml"></div>
-  
+    
+   
+    <ul class="nav">
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
 </div>
 
-  <aside id="sidebar" class="mdui-drawer">
-    <div class="mdui-tab" mdui-tab>
-        <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
-        <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">关于</a>
-    </div>
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
 
     
-    <div id="sidebar-tab1" class="mdui-p-a-1">
-        <div class="mdui-list">
+        
             
-                
-                <a href="/" class="mdui-list-item mdui-ripple">
-                    <div class="mdui-list-item-icon">
-                        <i class="iconfont icon-home"></i>
-                    </div>
-                    <div class="mdui-list-item-content">主页</div>
-                </a>
-            
-                
-                <a href="/tags/" class="mdui-list-item mdui-ripple">
-                    <div class="mdui-list-item-icon">
-                        <i class="iconfont bookmark"></i>
-                    </div>
-                    <div class="mdui-list-item-content">标签</div>
-                </a>
-            
-                
-                <a href="/categories/" class="mdui-list-item mdui-ripple">
-                    <div class="mdui-list-item-icon">
-                        <i class="iconfont folder"></i>
-                    </div>
-                    <div class="mdui-list-item-content">分类</div>
-                </a>
-            
-                
-                <a href="/archives/" class="mdui-list-item mdui-ripple">
-                    <div class="mdui-list-item-icon">
-                        <i class="iconfont icon-archive"></i>
-                    </div>
-                    <div class="mdui-list-item-content">归档</div>
-                </a>
-            
-                
-                <a href="/tools/" class="mdui-list-item mdui-ripple">
-                    <div class="mdui-list-item-icon">
-                        <i class="iconfont icon-tools"></i>
-                    </div>
-                    <div class="mdui-list-item-content">工具箱</div>
-                </a>
-            
-                
-                <a href="/about/" class="mdui-list-item mdui-ripple">
-                    <div class="mdui-list-item-icon">
-                        <i class="iconfont icon-user"></i>
-                    </div>
-                    <div class="mdui-list-item-content">关于</div>
-                </a>
-            
-            <div class="mdui-list-item mdui-ripple">
-                <div class="mdui-list-item-icon">
-                    <i class="iconfont icon-moon"></i>
+                <div class="post-main-title" style="text-align: center;">
+                    interesting
                 </div>
-                <div class="mdui-list-item-content">夜间模式</div>
-                <label class="mdui-switch" id="darkmode">
-                  <input type="checkbox" id="nightmode_switch"/>
-                  <i class="mdui-switch-icon"></i>
-                </label>
-            </div>           
-        </div>
-    </div>
+            
+        
+      
+    
 
     
-    <div id="sidebar-tab2" class="mdui-p-a-1">
-        <div class="sidebar-overview">
-            <div class="sidebar-avatar">
+
+        
+            <div class="post-head-meta-center">
+        
                 
-                    <img src="/icons/avatar.gif"/>
+                    <span>最近更新：2026-06-13</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：413</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：1分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
                 
             </div>
-            <div class="sidebar-author-name">Varka</div>
-            <div class="sidebar-description">nope.</div>
-        </div>
-        <div class="sidebar-links">
+    
+
+    <div class="post-md">
+        
             
                 
-                <div class="mdui-chip">
-                    <span class="mdui-chip-icon"><i class="iconfont icon-mail"></i></span>
-                    <a href="mailto:williametten@qq.com" class="mdui-chip-title">E-Mail</a>
-                </div>
             
-                
-                <div class="mdui-chip">
-                    <span class="mdui-chip-icon"><i class="iconfont icon-github"></i></span>
-                    <a target="_blank" rel="noopener" href="https://github.com/v-a-r-k-a/" class="mdui-chip-title">GitHub</a>
-                </div>
-            
-                
-                <div class="mdui-chip">
-                    <span class="mdui-chip-icon"><i class="iconfont icon-steam"></i></span>
-                    <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198322792290/" class="mdui-chip-title">Steam</a>
-                </div>
-            
-                
-                <div class="mdui-chip">
-                    <span class="mdui-chip-icon"><i class="iconfont icon-bilibili"></i></span>
-                    <a target="_blank" rel="noopener" href="https://space.bilibili.com/66274410?spm_id_from=333.337.0.0" class="mdui-chip-title">Bilibili</a>
-                </div>
-            
-        </div>
-        <ul class="mdui-list" mdui-collapse="{accordion: true}">
-            <li class="mdui-collapse-item">
-                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                    <div class="mdui-list-item-icon">
-                        <i class="iconfont icon-link"></i>
-                    </div>
-                    <div class="mdui-list-item-content">友情链接</div>
-                    <div class="mdui-collapse-item-arrow">
-                        <i class="mdui-list-item-icon iconfont icon-angle-down"></i>
-                    </div>
-                </div>
-                <ul id="linksList" class="mdui-collapse-item-body mdui-list mdui-list-dense">
-                    
-                        <a target="_blank" rel="noopener" href="https://garybear.cn/hexo-theme-meadow/" class="mdui-list-item mdui-ripple">
-                            Meadow说明文档
-                        </a>
-                    
-                </ul>
-            </li>
-        </ul>
-    </div>
-
-    <div class="mdui-divider"></div>
-    
-    
-</aside>
-  
-  <main id="main-contain" class="mdui-container mdui-m-t-5">
-    <article id="article" class="mdui-card mdui-p-b-2 mdui-m-b-5">
-  <header class="mdui-card-media">
-    
-    
-      <div class="post-header"> 
-  <a class="post-header-title" href="/2026/06/13/interesting/">interesting</a>
-  <div class="post-header-meta">
-    <span>
-      <span class="iconfont icon-calendar"></span>
-      发布于:&nbsp;2026-06-13
-    </span>
-    <span>
-      <span class="iconfont icon-calendar-check"></span>
-      更新于:&nbsp;2026-06-13
-    </span>
-    <span>
-      <span class="iconfont icon-folder"></span>
-      分类于:&nbsp;
-    </span>
-    
-      <span>
-        <span class="iconfont icon-eye"></span>
-        阅读次数:&nbsp;
-        <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
-      </span>
-    
-  </div>
-</div>   
-    
-
-
-
-    
-    
-    <div class="mdui-card-menu">
-    
-      <button class="mdui-btn mdui-btn-icon mdui-text-color-teal" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="iconfont icon-share"></i></button>
-      <ul class="mdui-menu" id="share_menu">
-        <li class="mdui-menu-item">
-          <a href="http://service.weibo.com/share/share.php?appkey=&title=interesting&url=http://v-a-r-k-a.github.io/2026/06/13/interesting/&pic=http://v-a-r-k-a.github.io/null&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
-        </li>
-        <li class="mdui-menu-item">
-          <a href="https://twitter.com/intent/tweet?text=interesting&url=http://v-a-r-k-a.github.io/2026/06/13/interesting/&via=Varka" target="_blank" class="mdui-ripple">分享到 Twitter</a>
-        </li>
-        <li class="mdui-menu-item">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=http://v-a-r-k-a.github.io/2026/06/13/interesting/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
-        </li>
-        <li class="mdui-menu-item">
-          <a href="https://plus.google.com/share?url=http://v-a-r-k-a.github.io/2026/06/13/interesting/" target="_blank" class="mdui-ripple">分享到 Google+</a>
-        </li>
-        <li class="mdui-menu-item">
-          <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://v-a-r-k-a.github.io/2026/06/13/interesting/&title=interesting" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
-        </li>
-        <li class="mdui-menu-item">
-          <a href="http://connect.qq.com/widget/shareqq/index.html?site=Varka&#39;s Blog&title=interesting&summary=nope.&pics=http://v-a-r-k-a.github.io/null&url=http://v-a-r-k-a.github.io/2026/06/13/interesting/" target="_blank" class="mdui-ripple">分享到 QQ</a>
-        </li>
-        <li class="mdui-menu-item">
-          <a href="https://telegram.me/share/url?url=http://v-a-r-k-a.github.io/2026/06/13/interesting/&text=interesting" target="_blank" class="mdui-ripple">分享到 Telegram</a>
-        </li>
-      </ul>
-    
-  </div>
-  </header>
-  
-  
-  
-  
-  <div class="post-tags">
-    
-      <i class="iconfont icon-tag">
-        <a rel="tag" href = /tags/experiment/ >experiment</a>
-      </i>
-    
-  </div>
-
-  
-  <div class="mdui-card-content mdui-typo mdui-p-x-4">
-    <p>👇 点击选项完成测评，提交后自动出结果：</p>
+        
+        <p>👇 点击选项完成测评，提交后自动出结果：</p>
 <div id="sds-test" style="max-width:800px; margin: 2rem auto; font-size:16px; line-height:1.8;">
   <div class="question" style="margin:1.5rem 0; padding-bottom:1rem; border-bottom:1px solid #eee;">
     <p>1. 我感到情绪沮丧，郁闷</p>
@@ -478,150 +441,193 @@ document.getElementById('submit-btn').addEventListener('click', function() {
   resultBox.style.display = 'block'; // 必须设置为 block 才能看到结果
 });
 </script>
-  </div>
-  <!--文末结束语-->
-  
-    <div style="text-align:center;color: #ccc;font-size:24px;"> --- 本文结束 <i class="iconfont icon-heartbeat" style="font-size:24px;"></i> The End --- </div>
-  
-  <!--页脚广告-->
-  
-  <div class="mdui-divider"></div>
-  
-  <nav>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-06-13</span>
+            
+                <span>该篇文章被 Varka</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/experiment/'>
+                            experiment
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
     
     
-      <a rel="next" class="post-nav-item mdui-float-right" href="/2026/06/08/hello-world/">
-        <span>Hello World</span>
-        <i class="iconfont icon-angle-right"></i>
-      </a>
+        
+            
     
-  </nav>
-</article>
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/07/16/%E7%A9%BA%E6%B0%97%E4%B8%AD%E3%80%81%E8%A1%8C%E3%81%8F%E3%82%88/'>空気中、行くよ</a></span>
+                
 
-
-
-
-  <div class="toc-button"  style="z-index: 100;">
-    <button class="mdui-fab mdui-ripple mdui-color-teal" mdui-menu="{target: '#toc'}"><i class="iconfont icon-list"></i></button>
-    <ul class="mdui-menu" id="toc">
-      <li class="mdui-menu-item">
-        <a href="/2026/06/13/interesting/" id="toc-header" class="mdui-ripple">文章目录</a>
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/06/08/hello-world/">Hello World</a>
+                    </span>
+                
+            </div>
+    
         
-      </li>
-    </ul>
-  </div>
+    
 
+    
+        
 
-
-    <div id="comment" class="mdui-card mdui-p-a-2 mdui-m-b-5">
-      <div class="mdui-tab" mdui-tab>
-        
-          <a href="#comment-tab0" class="mdui-ripple">gitalk</a>
-        
-          <a href="#comment-tab1" class="mdui-ripple">livere</a>
-        
-      </div>
-      
-        <div id="comment-tab0" class="mdui-p-a-2">
-          <div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
-<script>
-  var gitalk = new Gitalk({
-    clientID: '',
-    clientSecret: '',
-    repo: '',
-    owner: '',
-    admin: [''],
-    id:  md5(location.pathname) ,
-    distractionFreeMode: 'true',
-  });
-  gitalk.render('gitalk-container');
-</script>
-        </div>
-      
-        <div id="comment-tab1" class="mdui-p-a-2">
-          <div id="lv-container" data-id="city" data-uid="">
-  <script type="text/javascript">
-    (function (d, s) {
-      var j, e = d.getElementsByTagName(s)[0];
-      if (typeof LivereTower === 'function') { return; }
-      j = d.createElement(s);
-      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-      j.async = true;
-      e.parentNode.insertBefore(j, e);
-    })(document, 'script');
-  </script>
-  <noscript>Please enable JavaScript to view the comments powered by LiveRe.</noscript>
+     
 </div>
-        </div>
-      
-    </div>
-
-  </main>
-  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
-  <div class="mdui-container">
-    <div class="mdui-row">
-      
-        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank"></a>
-      
-      <span>
-        &copy; 2015 - 2026 
-        
-          <span style="color:#d9333f" class="iconfont icon-heart"></span>
-        
-        Varka
-      </span>
-    </div>
-    <div class="mdui-row">
-      
-        <div class="mdui-col-xs-6 mdui-text-right">
-          <span>Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a></span>
-        </div>
-        <div class="mdui-col-xs-6 mdui-text-left">
-          <span>Theme: <a href="https://github.com/kb1000fx/Meadow" rel="noopener" target="_blank">Meadow</a></span>
-        </div>
-      
-    </div>
-    <div class="mdui-row">
-      
-        <div class="mdui-col-xs-6 mdui-text-right">
-          <span id="busuanzi_container_site_uv" style="display: none;"> <span class="iconfont icon-user"></span>总访客量 <span id="busuanzi_value_site_uv"></span></span>
-        </div>
-        <div class="mdui-col-xs-6 mdui-text-left">
-          <span id="busuanzi_container_site_pv" style="display: none;"> <span class="iconfont icon-eye"></span>总访问量 <span id="busuanzi_value_site_pv"></span></span>
-        </div>
-      
-    </div>
- </div>
-</footer>
-  
-  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
-  
-  
-
-    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({
-        startOnLoad: true,
-        theme: "default"
-    });</script>
+                    
+
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
 
 
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
 
 
     
-<script src="/js/mdui.min.v1.0.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
 
 
 
 
-<script src="/js/meadow.js"></script>
 
-</body>
-</html >
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script src="/js/search.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>
