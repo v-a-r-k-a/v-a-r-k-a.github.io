@@ -448,13 +448,13 @@
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：0</span>
+                     <span>字数总计：1.5k</span>
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                    <span>阅读估时：1分钟</span>
+                    <span>阅读估时：8分钟</span>
                 
                 
                     
@@ -473,7 +473,405 @@
                 
             
         
-        <div class=".article-gallery"></div>
+        <div class=".article-gallery"><p>So Long, London…</p>
+
+<div id="taylor-lyrics-player">
+  <style>
+    /* ---------- 极简重置 + 泰勒·斯威夫特 专属风格 ---------- */
+    #taylor-lyrics-player {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      max-width: 640px;
+      margin: 2rem auto;
+      background: rgba(15, 23, 42, 0.75);  /* 深空蓝灰 */
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 32px;
+      padding: 28px 24px 22px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: #e2e8f0;
+      transition: all 0.2s;
+    }
+
+    #taylor-lyrics-player .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+    #taylor-lyrics-player .title {
+      font-size: 22px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 1px;
+    }
+    #taylor-lyrics-player .sub {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: 3px;
+      margin-top: 2px;
+    }
+    #taylor-lyrics-player .badge {
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 4px 14px;
+      border-radius: 40px;
+      color: rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    #taylor-lyrics-player .badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #60a5fa;
+      display: inline-block;
+      animation: pulse-dot 1.8s infinite ease-in-out;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.2; transform: scale(0.6); }
+    }
+
+    /* ---------- 歌词滚动区 ---------- */
+    #taylor-lyrics-player .lyrics-box {
+      height: 320px;
+      overflow-y: auto;
+      padding: 10px 6px;
+      scroll-behavior: smooth;
+      margin-bottom: 16px;
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.2);
+      box-shadow: inset 0 4px 20px rgba(0,0,0,0.2);
+    }
+    #taylor-lyrics-player .lyrics-box::-webkit-scrollbar {
+      width: 3px;
+    }
+    #taylor-lyrics-player .lyrics-box::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    #taylor-lyrics-player .lyrics-box::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+    }
+
+    /* ---------- 每行歌词 ---------- */
+    #taylor-lyrics-player .line {
+      text-align: center;
+      padding: 12px 8px;
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.12);
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      border-radius: 14px;
+      line-height: 1.7;
+      letter-spacing: 0.8px;
+      transform: scale(0.96);
+    }
+    /* 当前高亮行 —— 暖金色，突出但不刺眼 */
+    #taylor-lyrics-player .line.active {
+      font-size: 27px;
+      font-weight: 700;
+      color: #fde68a;
+      background: rgba(251, 191, 36, 0.06);
+      border: 1px solid rgba(251, 191, 36, 0.08);
+      box-shadow: 0 0 40px rgba(251, 191, 36, 0.02);
+      transform: scale(1);
+      text-shadow: 0 0 20px rgba(251, 191, 36, 0.05);
+    }
+    #taylor-lyrics-player .line.done {
+      color: rgba(255, 255, 255, 0.3);
+      transform: scale(0.92);
+    }
+    #taylor-lyrics-player .line.upcoming {
+      color: rgba(255, 255, 255, 0.06);
+      transform: scale(0.88);
+    }
+
+    /* ---------- 底部控制 ---------- */
+    #taylor-lyrics-player .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    #taylor-lyrics-player .controls button {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.25);
+      font-size: 18px;
+      padding: 6px 14px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      background: rgba(255, 255, 255, 0.02);
+      font-family: inherit;
+      letter-spacing: 0.5px;
+    }
+    #taylor-lyrics-player .controls button:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    #taylor-lyrics-player .controls .primary {
+      font-size: 28px;
+      color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 2px 22px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    #taylor-lyrics-player .controls .primary:hover {
+      color: #fbbf24;
+      background: rgba(251, 191, 36, 0.05);
+      border-color: rgba(251, 191, 36, 0.08);
+    }
+
+    #taylor-lyrics-player .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    #taylor-lyrics-player .progress-bar {
+      flex: 1;
+      height: 4px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+      position: relative;
+      transition: height 0.2s;
+    }
+    #taylor-lyrics-player .progress-bar:hover {
+      height: 6px;
+    }
+    #taylor-lyrics-player .progress-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #fbbf24, #f59e0b);
+      transition: width 0.3s ease;
+      box-shadow: 0 0 12px rgba(251, 191, 36, 0.08);
+    }
+    #taylor-lyrics-player .time {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.15);
+      min-width: 80px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.3px;
+    }
+
+    /* ---------- 移动端适配 ---------- */
+    @media (max-width: 520px) {
+      #taylor-lyrics-player { padding: 18px 14px 16px; }
+      #taylor-lyrics-player .line { font-size: 16px; padding: 10px 4px; }
+      #taylor-lyrics-player .line.active { font-size: 22px; }
+      #taylor-lyrics-player .title { font-size: 18px; }
+      #taylor-lyrics-player .controls button { font-size: 16px; padding: 4px 10px; }
+      #taylor-lyrics-player .controls .primary { font-size: 24px; padding: 2px 16px; }
+    }
+  </style>
+
+  <!-- ====== HTML 结构 ====== -->
+  <div class="header">
+    <div>
+      <div class="title">☁️ So Long, London</div>
+      <div class="sub">Taylor Swift · The Tortured Poets Department</div>
+    </div>
+    <div class="badge"><span class="dot"></span> 播放中</div>
+  </div>
+
+  <div class="lyrics-box" id="lyricsBox"></div>
+
+  <div class="progress-wrap">
+    <div class="progress-bar" id="progressBar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <span class="time" id="timeDisplay">0:00 / 0:00</span>
+  </div>
+
+  <div class="controls">
+    <button id="prevBtn">⏮</button>
+    <button class="primary" id="playBtn"><span id="playIcon">⏸</span></button>
+    <button id="nextBtn">⏭</button>
+    <button id="resetBtn">⟳ 重播</button>
+  </div>
+
+  <script>
+    (function() {
+      // ---------- 歌词数据 (So Long, London) ----------
+      const LYRICS = [
+        'I saw in my mind fairy lights through the mist',
+        'I kept calm and carried the weight of the rift',
+        'Pulled him in tighter each time he was drifting away',
+        'My spine split from carrying us up the hill',
+        'Wet through my clothes, weary bones caught the chill',
+        'I stopped trying to make him laugh',
+        'stopped trying to drill the safe',
+        'Thinking, how much sad did you,',
+        'think I had did you,',
+        'think I had in me? O tragedy',
+        'So Long LONDON, you'll find someone',
+        'You swore that you loved me but where were the clues',
+        'I died on the alter waiting for the proof',
+        'You sacrificed us to the gods of your bluest days',
+        'AND I'm just, gettin, colour, back , into, my face',
+        'I'm just, mad as, hell cuz I LOVED THIS PLACE for'
+      ];
+
+      // ---------- DOM 引用 ----------
+      const box = document.getElementById('lyricsBox');
+      const fill = document.getElementById('progressFill');
+      const timeDisplay = document.getElementById('timeDisplay');
+      const playBtn = document.getElementById('playBtn');
+      const playIcon = document.getElementById('playIcon');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const resetBtn = document.getElementById('resetBtn');
+      const progressBar = document.getElementById('progressBar');
+
+      // ---------- 状态 ----------
+      let current = 0;
+      let isPlaying = true;
+      let timer = null;
+      const STEP = 3400; // 每句停留 3.4 秒（稍慢一点，更有叙事感）
+
+      // ---------- 渲染歌词 ----------
+      function render() {
+        box.innerHTML = '';
+        LYRICS.forEach((text, i) => {
+          const div = document.createElement('div');
+          div.className = 'line';
+          if (i === current) div.classList.add('active');
+          else if (i < current) div.classList.add('done');
+          else div.classList.add('upcoming');
+          div.textContent = text;
+          box.appendChild(div);
+        });
+        scrollToActive();
+        updateProgress();
+      }
+
+      function scrollToActive() {
+        const active = box.querySelector('.active');
+        if (active) {
+          const top = active.offsetTop - box.clientHeight / 2 + active.offsetHeight / 2;
+          box.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+        }
+      }
+
+      // ---------- 进度更新 ----------
+      function updateProgress() {
+        const total = LYRICS.length;
+        const pct = total > 1 ? (current / (total - 1)) * 100 : 0;
+        fill.style.width = Math.min(pct, 100) + '%';
+        const totalSec = (total - 1) * (STEP / 1000);
+        const curSec = current * (STEP / 1000);
+        timeDisplay.textContent = formatTime(curSec) + ' / ' + formatTime(totalSec);
+      }
+
+      function formatTime(sec) {
+        const m = Math.floor(sec / 60);
+        const s = Math.floor(sec % 60);
+        return m + ':' + (s < 10 ? '0' : '') + s;
+      }
+
+      // ---------- 核心控制 ----------
+      function goTo(index) {
+        if (index < 0) index = 0;
+        if (index >= LYRICS.length) index = LYRICS.length - 1;
+        current = index;
+        render();
+        resetTimer();
+        if (isPlaying) startTimer();
+      }
+
+      function next() {
+        goTo(current + 1 >= LYRICS.length ? 0 : current + 1);
+      }
+
+      function prev() {
+        goTo(current - 1);
+      }
+
+      function reset() {
+        goTo(0);
+      }
+
+      function togglePlay() {
+        isPlaying = !isPlaying;
+        playIcon.textContent = isPlaying ? '⏸' : '▶️';
+        if (isPlaying) startTimer();
+        else stopTimer();
+      }
+
+      function startTimer() {
+        stopTimer();
+        timer = setInterval(next, STEP);
+        updateProgress();
+      }
+
+      function stopTimer() {
+        if (timer) { clearInterval(timer); timer = null; }
+      }
+
+      function resetTimer() {
+        stopTimer();
+        if (isPlaying) startTimer();
+      }
+
+      // ---------- 事件绑定 ----------
+      playBtn.addEventListener('click', togglePlay);
+      nextBtn.addEventListener('click', () => { stopTimer(); next(); if (isPlaying) startTimer(); });
+      prevBtn.addEventListener('click', () => { stopTimer(); prev(); if (isPlaying) startTimer(); });
+      resetBtn.addEventListener('click', () => { stopTimer(); reset(); if (isPlaying) startTimer(); });
+
+      progressBar.addEventListener('click', (e) => {
+        const rect = progressBar.getBoundingClientRect();
+        const pct = (e.clientX - rect.left) / rect.width;
+        const idx = Math.floor(pct * LYRICS.length);
+        const target = Math.min(Math.max(idx, 0), LYRICS.length - 1);
+        stopTimer();
+        goTo(target);
+        if (isPlaying) startTimer();
+      });
+
+      // 键盘快捷键（空格切换，左右键切换）
+      document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.code === 'Space') { e.preventDefault(); togglePlay(); }
+        if (e.code === 'ArrowRight') { e.preventDefault(); nextBtn.click(); }
+        if (e.code === 'ArrowLeft') { e.preventDefault(); prevBtn.click(); }
+      });
+
+      // ---------- 启动 ----------
+      render();
+      startTimer();
+
+      // 窗口大小变化时修正滚动位置
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(scrollToActive, 300);
+      });
+
+      console.log('☁️ So Long, London · Taylor Swift — 歌词播放器已启动 (按空格暂停/继续)');
+    })();
+  </script>
+</div>
+
+
+
+<p>So Long, London</p>
+</div>
     </div>
 
     <div class="post-meta">
