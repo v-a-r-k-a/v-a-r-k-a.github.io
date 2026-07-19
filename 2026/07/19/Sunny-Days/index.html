@@ -448,13 +448,13 @@
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：3.4k</span>
+                     <span>字数总计：1.3k</span>
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                    <span>阅读估时：19分钟</span>
+                    <span>阅读估时：7分钟</span>
                 
                 
                     
@@ -474,947 +474,359 @@
             
         
         <div class=".article-gallery"><p>嗨咯我来啦</p>
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🎵 晴天 · 周杰伦</title>
-    <style>
-        /* ===== 全局重置 & 字体 ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-<pre><code>    @import url(&#39;https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&amp;display=swap&#39;);
+<div id="simple-lyrics-player">
+  <style>
+    /* 极简重置 + 样式 */
+    #simple-lyrics-player {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      max-width: 640px;
+      margin: 2rem auto;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 28px;
+      padding: 24px 20px 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #fff;
+      background: #1a1028;
+    }
+    #simple-lyrics-player .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    #simple-lyrics-player .title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fbbf24;
+      letter-spacing: 1px;
+    }
+    #simple-lyrics-player .artist {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 2px;
+    }
+    #simple-lyrics-player .badge {
+      font-size: 11px;
+      background: rgba(255,255,255,0.05);
+      padding: 4px 12px;
+      border-radius: 30px;
+      color: rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    #simple-lyrics-player .badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #34d399;
+      display: inline-block;
+      animation: blink 1.6s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
 
-    body {
-        font-family: &#39;Noto Serif SC&#39;, &#39;PingFang SC&#39;, &#39;Microsoft YaHei&#39;, serif;
-        background: #0a0618;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        user-select: none;
+    #simple-lyrics-player .lyrics-box {
+      height: 300px;
+      overflow-y: auto;
+      padding: 8px 4px;
+      scroll-behavior: smooth;
+      margin-bottom: 12px;
+      border-radius: 16px;
+      background: rgba(0,0,0,0.15);
     }
+    #simple-lyrics-player .lyrics-box::-webkit-scrollbar { width: 3px; }
+    #simple-lyrics-player .lyrics-box::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 10px; }
 
-    /* ===== 星空粒子背景 ===== */
-    #stars-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        pointer-events: none;
+    #simple-lyrics-player .line {
+      text-align: center;
+      padding: 10px 6px;
+      font-size: 17px;
+      color: rgba(255,255,255,0.15);
+      transition: all 0.5s ease;
+      border-radius: 12px;
+      line-height: 1.6;
+      letter-spacing: 0.5px;
     }
-
-    /* 背景光晕层 */
-    .glow-orb {
-        position: fixed;
-        border-radius: 50%;
-        filter: blur(120px);
-        opacity: 0.4;
-        pointer-events: none;
-        z-index: 0;
-        animation: orbFloat 16s ease-in-out infinite alternate;
+    #simple-lyrics-player .line.active {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      background: rgba(251, 191, 36, 0.08);
+      border: 1px solid rgba(251, 191, 36, 0.1);
+      box-shadow: 0 0 30px rgba(251, 191, 36, 0.04);
     }
-    .glow-orb--1 {
-        width: 60vmax;
-        height: 60vmax;
-        top: -20%;
-        left: -20%;
-        background: radial-gradient(circle, #7c3aed66, #4f46e533, transparent);
-        animation-delay: 0s;
+    #simple-lyrics-player .line.done {
+      color: rgba(255,255,255,0.3);
     }
-    .glow-orb--2 {
-        width: 50vmax;
-        height: 50vmax;
-        bottom: -15%;
-        right: -15%;
-        background: radial-gradient(circle, #db277766, #7e22ce33, transparent);
-        animation-delay: -5s;
-    }
-    .glow-orb--3 {
-        width: 40vmax;
-        height: 40vmax;
-        top: 40%;
-        left: 50%;
-        transform: translateX(-50%);
-        background: radial-gradient(circle, #f472b644, #8b5cf633, transparent);
-        animation-delay: -10s;
-    }
-
-    @keyframes orbFloat {
-        0% {
-            transform: translate(0, 0) scale(1);
-        }
-        33% {
-            transform: translate(4%, -3%) scale(1.1);
-        }
-        66% {
-            transform: translate(-3%, 5%) scale(0.9);
-        }
-        100% {
-            transform: translate(2%, -2%) scale(1.05);
-        }
-    }
-
-    /* ===== 主卡片 ===== */
-    .player-card {
-        position: relative;
-        z-index: 1;
-        width: 92vw;
-        max-width: 720px;
-        height: 80vh;
-        max-height: 680px;
-        background: rgba(10, 6, 28, 0.55);
-        backdrop-filter: blur(24px) saturate(1.6);
-        -webkit-backdrop-filter: blur(24px) saturate(1.6);
-        border-radius: 48px;
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        box-shadow:
-            0 40px 100px rgba(0, 0, 0, 0.7),
-            inset 0 1px 0 rgba(255, 255, 255, 0.05),
-            0 0 80px rgba(124, 58, 237, 0.08);
-        padding: 32px 28px 24px;
-        display: flex;
-        flex-direction: column;
-        transition: box-shadow 0.6s ease;
+    #simple-lyrics-player .line.upcoming {
+      color: rgba(255,255,255,0.08);
     }
 
-    /* ===== 顶部：歌曲信息 ===== */
-    .song-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-bottom: 16px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        flex-shrink: 0;
+    #simple-lyrics-player .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 6px;
+      flex-wrap: wrap;
     }
+    #simple-lyrics-player .controls button {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.35);
+      font-size: 18px;
+      padding: 6px 14px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.2s;
+      background: rgba(255,255,255,0.02);
+      font-family: inherit;
+    }
+    #simple-lyrics-player .controls button:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.06);
+    }
+    #simple-lyrics-player .controls .primary {
+      font-size: 26px;
+      color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.04);
+      padding: 4px 20px;
+    }
+    #simple-lyrics-player .controls .primary:hover {
+      color: #fbbf24;
+      background: rgba(251, 191, 36, 0.06);
+    }
+    #simple-lyrics-player .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    #simple-lyrics-player .progress-bar {
+      flex: 1;
+      height: 4px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.06);
+      cursor: pointer;
+      position: relative;
+    }
+    #simple-lyrics-player .progress-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 4px;
+      background: #fbbf24;
+      transition: width 0.3s ease;
+    }
+    #simple-lyrics-player .time {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      min-width: 70px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    @media (max-width: 500px) {
+      #simple-lyrics-player .line { font-size: 15px; padding: 8px 4px; }
+      #simple-lyrics-player .line.active { font-size: 20px; }
+      #simple-lyrics-player .controls button { font-size: 16px; padding: 4px 10px; }
+    }
+  </style>
 
-    .song-info {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-    }
-    .song-title {
-        font-size: 22px;
-        font-weight: 900;
-        color: #ffffff;
-        letter-spacing: 2px;
-        background: linear-gradient(135deg, #fbbf24, #f59e0b);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    .song-artist {
-        font-size: 14px;
-        color: rgba(255, 255, 255, 0.4);
-        letter-spacing: 4px;
-        font-weight: 400;
-    }
+  <div class="header">
+    <div>
+      <div class="title">🌤️ 晴天</div>
+      <div class="artist">周杰伦 · 叶惠美</div>
+    </div>
+    <div class="badge"><span class="dot"></span> 播放中</div>
+  </div>
 
-    .song-badge {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.25);
-        letter-spacing: 1px;
-        background: rgba(255, 255, 255, 0.04);
-        padding: 6px 14px;
-        border-radius: 40px;
-        border: 1px solid rgba(255, 255, 255, 0.04);
-    }
-    .song-badge .dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: #34d399;
-        animation: pulse-dot 1.8s ease-in-out infinite;
-    }
-    @keyframes pulse-dot {
-        0%,
-        100% {
-            opacity: 1;
-            transform: scale(1);
-        }
-        50% {
-            opacity: 0.3;
-            transform: scale(0.7);
-        }
-    }
+  <div class="lyrics-box" id="lyricsBox"></div>
 
-    /* ===== 歌词区域 ===== */
-    .lyrics-wrapper {
-        flex: 1;
-        overflow: hidden;
-        position: relative;
-        margin: 16px 0 12px;
-        border-radius: 20px;
-    }
+  <div class="progress-wrap">
+    <div class="progress-bar" id="progressBar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <span class="time" id="timeDisplay">0:00 / 0:00</span>
+  </div>
 
-    .lyrics-container {
-        height: 100%;
-        overflow-y: auto;
-        scroll-behavior: smooth;
-        padding: 20px 8px 20px 16px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-        /* 隐藏滚动条但保留功能 */
-        scrollbar-width: thin;
-        scrollbar-color: rgba(255, 255, 255, 0.08) transparent;
-    }
-    .lyrics-container::-webkit-scrollbar {
-        width: 3px;
-    }
-    .lyrics-container::-webkit-scrollbar-track {
-        background: transparent;
-    }
-    .lyrics-container::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.08);
-        border-radius: 10px;
-    }
+  <div class="controls">
+    <button id="prevBtn">⏮</button>
+    <button class="primary" id="playBtn"><span id="playIcon">⏸</span></button>
+    <button id="nextBtn">⏭</button>
+    <button id="resetBtn">⟳ 重播</button>
+  </div>
 
-    /* 每行歌词 */
-    .lyric-line {
-        font-size: 18px;
-        font-weight: 400;
-        color: rgba(255, 255, 255, 0.2);
-        text-align: center;
-        padding: 8px 4px;
-        border-radius: 12px;
-        transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
-        line-height: 1.6;
-        letter-spacing: 1.5px;
-        transform: scale(0.96);
-        opacity: 0.3;
-        cursor: default;
-        position: relative;
-    }
+  <script>
+    (function() {
+      // ---------- 歌词 ----------
+      const LYRICS = [
+        '故事的小黄花 从出生那年就飘着',
+        '童年的荡秋千 随记忆一直晃到现在',
+        'Re So So Si Do Si La',
+        'So La Si Si Si Si La Si La So',
+        '吹着前奏望着天空 我想起花瓣试着掉落',
+        '为你翘课的那一天 花落的那一天',
+        '教室的那一间 我怎么看不见',
+        '消失的下雨天 我好想再淋一遍',
+        '没想到失去的勇气我还留着',
+        '好想再问一遍 你会等待还是离开',
+        '刮风这天我试过握着你手',
+        '但偏偏雨渐渐大到我看你不见',
+        '还要多久我才能在你身边',
+        '等到放晴的那天也许我会比较好一点',
+        '从前从前有个人爱你很久',
+        '但偏偏风渐渐把距离吹得好远',
+        '好不容易又能再多爱一天',
+        '但故事的最后你好像还是说了拜拜'
+      ];
 
-    /* 当前高亮行 */
-    .lyric-line.active {
-        font-size: 28px;
-        font-weight: 700;
-        color: #ffffff;
-        opacity: 1;
-        transform: scale(1);
-        text-shadow:
-            0 0 30px rgba(251, 191, 36, 0.15),
-            0 0 60px rgba(251, 191, 36, 0.05);
-        background: linear-gradient(135deg, rgba(251, 191, 36, 0.08), rgba(245, 158, 11, 0.02));
-        border: 1px solid rgba(251, 191, 36, 0.06);
-    }
-    /* 当前行特殊发光装饰 */
-    .lyric-line.active::before {
-        content: &#39;✦&#39;;
-        position: absolute;
-        left: -8px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 14px;
-        color: #fbbf24;
-        opacity: 0.6;
-        animation: sparkle 2s ease-in-out infinite;
-    }
-    .lyric-line.active::after {
-        content: &#39;✦&#39;;
-        position: absolute;
-        right: -8px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 14px;
-        color: #fbbf24;
-        opacity: 0.6;
-        animation: sparkle 2s ease-in-out infinite 1s;
-    }
-    @keyframes sparkle {
-        0%,
-        100% {
-            opacity: 0.3;
-            transform: translateY(-50%) scale(0.8);
-        }
-        50% {
-            opacity: 1;
-            transform: translateY(-50%) scale(1.2);
-        }
-    }
+      // ---------- DOM ----------
+      const box = document.getElementById('lyricsBox');
+      const fill = document.getElementById('progressFill');
+      const timeDisplay = document.getElementById('timeDisplay');
+      const playBtn = document.getElementById('playBtn');
+      const playIcon = document.getElementById('playIcon');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const resetBtn = document.getElementById('resetBtn');
+      const progressBar = document.getElementById('progressBar');
 
-    /* 已播放过的行 (保留淡淡痕迹) */
-    .lyric-line.done {
-        color: rgba(255, 255, 255, 0.35);
-        opacity: 0.6;
-        transform: scale(0.92);
-    }
+      let current = 0;
+      let isPlaying = true;
+      let timer = null;
+      const STEP = 3200; // 每句毫秒
 
-    /* 即将到来的行 (有朦胧感) */
-    .lyric-line.upcoming {
-        color: rgba(255, 255, 255, 0.15);
-        opacity: 0.4;
-        transform: scale(0.88);
-    }
-
-    /* ===== 底部控制 ===== */
-    .player-footer {
-        flex-shrink: 0;
-        padding-top: 14px;
-        border-top: 1px solid rgba(255, 255, 255, 0.04);
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .progress-wrap {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-    }
-    .progress-bar {
-        flex: 1;
-        height: 4px;
-        border-radius: 4px;
-        background: rgba(255, 255, 255, 0.06);
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
-        transition: height 0.2s ease;
-    }
-    .progress-bar:hover {
-        height: 6px;
-    }
-    .progress-fill {
-        height: 100%;
-        width: 0%;
-        border-radius: 4px;
-        background: linear-gradient(90deg, #fbbf24, #f59e0b);
-        transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        box-shadow: 0 0 16px rgba(251, 191, 36, 0.2);
-    }
-    .progress-time {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.25);
-        font-variant-numeric: tabular-nums;
-        min-width: 48px;
-        text-align: right;
-        letter-spacing: 0.5px;
-    }
-
-    .controls {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 18px;
-        margin-top: 4px;
-    }
-    .ctrl-btn {
-        background: none;
-        border: none;
-        color: rgba(255, 255, 255, 0.3);
-        font-size: 20px;
-        cursor: pointer;
-        padding: 6px 12px;
-        border-radius: 30px;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-family: inherit;
-    }
-    .ctrl-btn:hover {
-        color: rgba(255, 255, 255, 0.7);
-        background: rgba(255, 255, 255, 0.04);
-    }
-    .ctrl-btn.primary {
-        font-size: 28px;
-        color: rgba(255, 255, 255, 0.7);
-        background: rgba(255, 255, 255, 0.04);
-        padding: 6px 18px;
-        border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    .ctrl-btn.primary:hover {
-        color: #ffffff;
-        background: rgba(251, 191, 36, 0.08);
-        border-color: rgba(251, 191, 36, 0.15);
-        box-shadow: 0 0 30px rgba(251, 191, 36, 0.04);
-    }
-    .ctrl-btn .label {
-        font-size: 12px;
-        font-weight: 400;
-        letter-spacing: 1px;
-        color: rgba(255, 255, 255, 0.2);
-    }
-
-    /* ===== 响应式 ===== */
-    @media (max-width: 600px) {
-        .player-card {
-            padding: 20px 16px 18px;
-            border-radius: 32px;
-            height: 85vh;
-            max-height: 600px;
-        }
-        .song-title {
-            font-size: 18px;
-        }
-        .song-artist {
-            font-size: 12px;
-        }
-        .song-badge {
-            font-size: 10px;
-            padding: 4px 10px;
-        }
-        .lyric-line {
-            font-size: 15px;
-            padding: 6px 2px;
-        }
-        .lyric-line.active {
-            font-size: 22px;
-        }
-        .lyric-line.active::before,
-        .lyric-line.active::after {
-            display: none;
-        }
-        .lyrics-container {
-            padding: 12px 4px 12px 8px;
-            gap: 6px;
-        }
-        .ctrl-btn {
-            font-size: 16px;
-            padding: 4px 10px;
-        }
-        .ctrl-btn.primary {
-            font-size: 22px;
-            padding: 4px 14px;
-        }
-        .progress-time {
-            font-size: 10px;
-            min-width: 36px;
-        }
-    }
-    @media (max-width: 400px) {
-        .player-card {
-            padding: 14px 10px 14px;
-            border-radius: 24px;
-        }
-        .lyric-line {
-            font-size: 13px;
-        }
-        .lyric-line.active {
-            font-size: 18px;
-        }
-        .song-title {
-            font-size: 16px;
-        }
-    }
-
-    /* ===== 入场动画 ===== */
-    .player-card {
-        animation: cardIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-    }
-    @keyframes cardIn {
-        0% {
-            opacity: 0;
-            transform: translateY(40px) scale(0.96);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    }
-
-    /* 加载中的小提示 */
-    .loading-tip {
-        position: fixed;
-        bottom: 24px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 2;
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.08);
-        letter-spacing: 2px;
-        font-weight: 300;
-        animation: fadeTip 4s ease-in-out infinite;
-    }
-    @keyframes fadeTip {
-        0%,
-        100% {
-            opacity: 0.3;
-        }
-        50% {
-            opacity: 0.8;
-        }
-    }
-&lt;/style&gt;
-</code></pre>
-</head>
-<body>
-
-<pre><code>&lt;!-- ===== 背景光晕 ===== --&gt;
-&lt;div class=&quot;glow-orb glow-orb--1&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;glow-orb glow-orb--2&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;glow-orb glow-orb--3&quot;&gt;&lt;/div&gt;
-
-&lt;!-- ===== 星空 Canvas ===== --&gt;
-&lt;canvas id=&quot;stars-canvas&quot;&gt;&lt;/canvas&gt;
-
-&lt;!-- ===== 主卡片 ===== --&gt;
-&lt;div class=&quot;player-card&quot; id=&quot;playerCard&quot;&gt;
-
-    &lt;!-- 顶部 --&gt;
-    &lt;div class=&quot;song-header&quot;&gt;
-        &lt;div class=&quot;song-info&quot;&gt;
-            &lt;div class=&quot;song-title&quot;&gt;晴天&lt;/div&gt;
-            &lt;div class=&quot;song-artist&quot;&gt;周杰伦 · 叶惠美&lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;song-badge&quot;&gt;
-            &lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;
-            &lt;span&gt;播放中&lt;/span&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;!-- 歌词 --&gt;
-    &lt;div class=&quot;lyrics-wrapper&quot;&gt;
-        &lt;div class=&quot;lyrics-container&quot; id=&quot;lyricsContainer&quot;&gt;
-            &lt;!-- JS 动态渲染 --&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;!-- 底部 --&gt;
-    &lt;div class=&quot;player-footer&quot;&gt;
-        &lt;div class=&quot;progress-wrap&quot;&gt;
-            &lt;div class=&quot;progress-bar&quot; id=&quot;progressBar&quot;&gt;
-                &lt;div class=&quot;progress-fill&quot; id=&quot;progressFill&quot;&gt;&lt;/div&gt;
-            &lt;/div&gt;
-            &lt;span class=&quot;progress-time&quot; id=&quot;progressTime&quot;&gt;0:00&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;controls&quot;&gt;
-            &lt;button class=&quot;ctrl-btn&quot; id=&quot;prevBtn&quot; title=&quot;上一句&quot;&gt;
-                &lt;span&gt;⏮&lt;/span&gt;
-            &lt;/button&gt;
-            &lt;button class=&quot;ctrl-btn primary&quot; id=&quot;playBtn&quot; title=&quot;播放 / 暂停&quot;&gt;
-                &lt;span id=&quot;playIcon&quot;&gt;⏸&lt;/span&gt;
-            &lt;/button&gt;
-            &lt;button class=&quot;ctrl-btn&quot; id=&quot;nextBtn&quot; title=&quot;下一句&quot;&gt;
-                &lt;span&gt;⏭&lt;/span&gt;
-            &lt;/button&gt;
-            &lt;button class=&quot;ctrl-btn&quot; id=&quot;resetBtn&quot; title=&quot;重头开始&quot;&gt;
-                &lt;span&gt;⟳&lt;/span&gt;
-                &lt;span class=&quot;label&quot;&gt;重播&lt;/span&gt;
-            &lt;/button&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- 底部小提示 --&gt;
-&lt;div class=&quot;loading-tip&quot;&gt;✦ 点击卡片暂停 · 滚轮可浏览 ✦&lt;/div&gt;
-
-&lt;script&gt;
-    // ============================================================
-    //  1. 歌词数据
-    // ============================================================
-    const LYRICS = [
-        &#39;故事的小黄花 从出生那年就飘着&#39;,
-        &#39;童年的荡秋千 随记忆一直晃到现在&#39;,
-        &#39;Re So So Si Do Si La&#39;,
-        &#39;So La Si Si Si Si La Si La So&#39;,
-        &#39;吹着前奏望着天空 我想起花瓣试着掉落&#39;,
-        &#39;为你翘课的那一天 花落的那一天&#39;,
-        &#39;教室的那一间 我怎么看不见&#39;,
-        &#39;消失的下雨天 我好想再淋一遍&#39;,
-        &#39;没想到失去的勇气我还留着&#39;,
-        &#39;好想再问一遍 你会等待还是离开&#39;,
-        &#39;刮风这天我试过握着你手&#39;,
-        &#39;但偏偏雨渐渐大到我看你不见&#39;,
-        &#39;还要多久我才能在你身边&#39;,
-        &#39;等到放晴的那天也许我会比较好一点&#39;,
-        &#39;从前从前有个人爱你很久&#39;,
-        &#39;但偏偏风渐渐把距离吹得好远&#39;,
-        &#39;好不容易又能再多爱一天&#39;,
-        &#39;但故事的最后你好像还是说了拜拜&#39;
-    ];
-
-    // ============================================================
-    //  2. DOM 引用
-    // ============================================================
-    const container = document.getElementById(&#39;lyricsContainer&#39;);
-    const progressFill = document.getElementById(&#39;progressFill&#39;);
-    const progressTime = document.getElementById(&#39;progressTime&#39;);
-    const playBtn = document.getElementById(&#39;playBtn&#39;);
-    const playIcon = document.getElementById(&#39;playIcon&#39;);
-    const prevBtn = document.getElementById(&#39;prevBtn&#39;);
-    const nextBtn = document.getElementById(&#39;nextBtn&#39;);
-    const resetBtn = document.getElementById(&#39;resetBtn&#39;);
-    const progressBar = document.getElementById(&#39;progressBar&#39;);
-
-    // ============================================================
-    //  3. 状态
-    // ============================================================
-    let currentIndex = 0;
-    let isPlaying = true;
-    let intervalId = null;
-    const INTERVAL_MS = 3200; // 每句显示 3.2 秒
-    let elapsedMs = 0;
-    let startTime = 0;
-    let animFrameId = null;
-
-    // ============================================================
-    //  4. 渲染歌词
-    // ============================================================
-    function renderLyrics() {
-        container.innerHTML = &#39;&#39;;
-        LYRICS.forEach((text, idx) =&gt; {
-            const div = document.createElement(&#39;div&#39;);
-            div.className = &#39;lyric-line&#39;;
-            if (idx === currentIndex) div.classList.add(&#39;active&#39;);
-            else if (idx &lt; currentIndex) div.classList.add(&#39;done&#39;);
-            else div.classList.add(&#39;upcoming&#39;);
-            div.textContent = text;
-            div.dataset.index = idx;
-            container.appendChild(div);
-        });
-        // 滚动到当前行
-        scrollToActive();
-    }
-
-    function scrollToActive() {
-        const active = container.querySelector(&#39;.lyric-line.active&#39;);
-        if (active) {
-            const containerHeight = container.clientHeight;
-            const activeTop = active.offsetTop;
-            const activeHeight = active.offsetHeight;
-            const targetScroll = activeTop - (containerHeight / 2) + (activeHeight / 2);
-            container.scrollTo({
-                top: Math.max(0, targetScroll),
-                behavior: &#39;smooth&#39;
-            });
-        }
-    }
-
-    // ============================================================
-    //  5. 更新高亮
-    // ============================================================
-    function updateHighlight(index) {
-        const lines = container.querySelectorAll(&#39;.lyric-line&#39;);
-        lines.forEach((line, idx) =&gt; {
-            line.classList.remove(&#39;active&#39;, &#39;done&#39;, &#39;upcoming&#39;);
-            if (idx === index) {
-                line.classList.add(&#39;active&#39;);
-            } else if (idx &lt; index) {
-                line.classList.add(&#39;done&#39;);
-            } else {
-                line.classList.add(&#39;upcoming&#39;);
-            }
+      // ---------- 渲染 ----------
+      function render() {
+        box.innerHTML = '';
+        LYRICS.forEach((text, i) => {
+          const div = document.createElement('div');
+          div.className = 'line';
+          if (i === current) div.classList.add('active');
+          else if (i < current) div.classList.add('done');
+          else div.classList.add('upcoming');
+          div.textContent = text;
+          box.appendChild(div);
         });
         scrollToActive();
         updateProgress();
-    }
+      }
 
-    // ============================================================
-    //  6. 进度
-    // ============================================================
-    function updateProgress() {
+      function scrollToActive() {
+        const active = box.querySelector('.active');
+        if (active) {
+          const top = active.offsetTop - box.clientHeight/2 + active.offsetHeight/2;
+          box.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+        }
+      }
+
+      function updateProgress() {
         const total = LYRICS.length;
-        const pct = total &gt; 0 ? (currentIndex / (total - 1)) * 100 : 0;
-        progressFill.style.width = Math.min(pct, 100) + &#39;%&#39;;
-        // 时间显示 (模拟)
-        const totalSeconds = (total - 1) * (INTERVAL_MS / 1000);
-        const currentSeconds = currentIndex * (INTERVAL_MS / 1000);
-        progressTime.textContent = formatTime(currentSeconds) + &#39; / &#39; + formatTime(totalSeconds);
-    }
+        const pct = total > 1 ? (current / (total - 1)) * 100 : 0;
+        fill.style.width = Math.min(pct, 100) + '%';
+        // 时间
+        const totalSec = (total - 1) * (STEP / 1000);
+        const curSec = current * (STEP / 1000);
+        timeDisplay.textContent = formatTime(curSec) + ' / ' + formatTime(totalSec);
+      }
 
-    function formatTime(seconds) {
-        const m = Math.floor(seconds / 60);
-        const s = Math.floor(seconds % 60);
-        return m + &#39;:&#39; + (s &lt; 10 ? &#39;0&#39; : &#39;&#39;) + s;
-    }
+      function formatTime(sec) {
+        const m = Math.floor(sec / 60);
+        const s = Math.floor(sec % 60);
+        return m + ':' + (s < 10 ? '0' : '') + s;
+      }
 
-    // ============================================================
-    //  7. 核心控制
-    // ============================================================
-    function goTo(index) {
-        if (index &lt; 0) index = 0;
-        if (index &gt;= LYRICS.length) index = LYRICS.length - 1;
-        currentIndex = index;
-        updateHighlight(currentIndex);
-        // 重置计时器
+      // ---------- 控制 ----------
+      function goTo(index) {
+        if (index < 0) index = 0;
+        if (index >= LYRICS.length) index = LYRICS.length - 1;
+        current = index;
+        render();
         resetTimer();
         if (isPlaying) startTimer();
-    }
+      }
 
-    function next() {
-        if (currentIndex &lt; LYRICS.length - 1) {
-            goTo(currentIndex + 1);
-        } else {
-            // 循环到开头
-            goTo(0);
-        }
-    }
+      function next() {
+        goTo(current + 1 >= LYRICS.length ? 0 : current + 1);
+      }
 
-    function prev() {
-        if (currentIndex &gt; 0) {
-            goTo(currentIndex - 1);
-        }
-    }
+      function prev() {
+        goTo(current - 1);
+      }
 
-    function reset() {
+      function reset() {
         goTo(0);
-        progressFill.style.width = &#39;0%&#39;;
-        progressTime.textContent = &#39;0:00 / &#39; + formatTime((LYRICS.length - 1) * (INTERVAL_MS / 1000));
-    }
+      }
 
-    // ============================================================
-    //  8. 定时器
-    // ============================================================
-    function startTimer() {
+      function togglePlay() {
+        isPlaying = !isPlaying;
+        playIcon.textContent = isPlaying ? '⏸' : '▶️';
+        if (isPlaying) startTimer();
+        else stopTimer();
+      }
+
+      function startTimer() {
         stopTimer();
-        intervalId = setInterval(() =&gt; {
-            if (isPlaying) {
-                next();
-            }
-        }, INTERVAL_MS);
-        // 也用 rAF 更新进度条动画 (平滑)
-        startTime = performance.now();
-        elapsedMs = 0;
-        if (animFrameId) cancelAnimationFrame(animFrameId);
-        animateProgress();
-    }
+        timer = setInterval(next, STEP);
+        // 启动时立即更新一次进度（让进度条动起来）
+        updateProgress();
+      }
 
-    function stopTimer() {
-        if (intervalId) {
-            clearInterval(intervalId);
-            intervalId = null;
-        }
-        if (animFrameId) {
-            cancelAnimationFrame(animFrameId);
-            animFrameId = null;
-        }
-    }
+      function stopTimer() {
+        if (timer) { clearInterval(timer); timer = null; }
+      }
 
-    function resetTimer() {
+      function resetTimer() {
         stopTimer();
         if (isPlaying) startTimer();
-    }
+      }
 
-    function animateProgress() {
-        if (!isPlaying) {
-            animFrameId = null;
-            return;
-        }
-        const now = performance.now();
-        const delta = now - startTime;
-        const pctPerStep = 100 / (LYRICS.length - 1);
-        const stepProgress = Math.min(delta / INTERVAL_MS, 1);
-        const basePct = currentIndex * pctPerStep;
-        const currentPct = Math.min(basePct + stepProgress * pctPerStep, 100);
-        progressFill.style.width = currentPct + &#39;%&#39;;
+      // ---------- 事件绑定 ----------
+      playBtn.addEventListener('click', togglePlay);
+      nextBtn.addEventListener('click', () => { stopTimer(); next(); if (isPlaying) startTimer(); });
+      prevBtn.addEventListener('click', () => { stopTimer(); prev(); if (isPlaying) startTimer(); });
+      resetBtn.addEventListener('click', () => { stopTimer(); reset(); if (isPlaying) startTimer(); });
 
-        // 更新时间显示
-        const totalSeconds = (LYRICS.length - 1) * (INTERVAL_MS / 1000);
-        const currentSeconds = Math.min(currentIndex * (INTERVAL_MS / 1000) + delta / 1000, totalSeconds);
-        progressTime.textContent = formatTime(currentSeconds) + &#39; / &#39; + formatTime(totalSeconds);
-
-        animFrameId = requestAnimationFrame(animateProgress);
-    }
-
-    // ============================================================
-    //  9. 播放 / 暂停
-    // ============================================================
-    function togglePlay() {
-        isPlaying = !isPlaying;
-        playIcon.textContent = isPlaying ? &#39;⏸&#39; : &#39;▶️&#39;;
-        if (isPlaying) {
-            startTimer();
-        } else {
-            stopTimer();
-            // 暂停时进度条停在当前位置
-        }
-    }
-
-    // ============================================================
-    //  10. 星空粒子 (Canvas)
-    // ============================================================
-    function initStars() {
-        const canvas = document.getElementById(&#39;stars-canvas&#39;);
-        const ctx = canvas.getContext(&#39;2d&#39;);
-        let w, h;
-        const stars = [];
-        const COUNT = 180;
-
-        function resize() {
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = window.innerHeight;
-        }
-        window.addEventListener(&#39;resize&#39;, resize);
-        resize();
-
-        for (let i = 0; i &lt; COUNT; i++) {
-            stars.push({
-                x: Math.random() * w,
-                y: Math.random() * h,
-                r: Math.random() * 1.8 + 0.4,
-                dx: (Math.random() - 0.5) * 0.25,
-                dy: (Math.random() - 0.5) * 0.25,
-                opacity: Math.random() * 0.6 + 0.2,
-                twinkleSpeed: Math.random() * 0.02 + 0.005,
-                phase: Math.random() * Math.PI * 2
-            });
-        }
-
-        function draw() {
-            ctx.clearRect(0, 0, w, h);
-            const time = Date.now() * 0.001;
-
-            stars.forEach(s =&gt; {
-                // 移动
-                s.x += s.dx;
-                s.y += s.dy;
-                if (s.x &lt; 0) s.x = w;
-                if (s.x &gt; w) s.x = 0;
-                if (s.y &lt; 0) s.y = h;
-                if (s.y &gt; h) s.y = 0;
-
-                // 闪烁
-                const twinkle = Math.sin(time * s.twinkleSpeed + s.phase) * 0.3 + 0.7;
-                const alpha = s.opacity * twinkle;
-
-                ctx.beginPath();
-                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-                ctx.fill();
-
-                // 偶尔加一点光晕
-                if (s.r &gt; 1.4) {
-                    ctx.shadowColor = &#39;rgba(255, 255, 255, 0.08)&#39;;
-                    ctx.shadowBlur = 12;
-                    ctx.beginPath();
-                    ctx.arc(s.x, s.y, s.r * 0.5, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.15})`;
-                    ctx.fill();
-                    ctx.shadowBlur = 0;
-                }
-            });
-
-            requestAnimationFrame(draw);
-        }
-        draw();
-
-        // 窗口变化时重置星星位置比例
-        window.addEventListener(&#39;resize&#39;, () =&gt; {
-            resize();
-            stars.forEach(s =&gt; {
-                s.x = Math.random() * w;
-                s.y = Math.random() * h;
-            });
-        });
-    }
-
-    // ============================================================
-    //  11. 事件绑定 &amp; 初始化
-    // ============================================================
-    playBtn.addEventListener(&#39;click&#39;, togglePlay);
-
-    nextBtn.addEventListener(&#39;click&#39;, () =&gt; {
-        if (isPlaying) {
-            // 手动点击下一句，重置计时器
-            stopTimer();
-            next();
-            if (isPlaying) startTimer();
-        } else {
-            next();
-        }
-    });
-
-    prevBtn.addEventListener(&#39;click&#39;, () =&gt; {
-        if (isPlaying) {
-            stopTimer();
-            prev();
-            if (isPlaying) startTimer();
-        } else {
-            prev();
-        }
-    });
-
-    resetBtn.addEventListener(&#39;click&#39;, () =&gt; {
-        if (isPlaying) {
-            stopTimer();
-            reset();
-            if (isPlaying) startTimer();
-        } else {
-            reset();
-        }
-    });
-
-    // 点击进度条跳转 (近似)
-    progressBar.addEventListener(&#39;click&#39;, (e) =&gt; {
+      progressBar.addEventListener('click', (e) => {
         const rect = progressBar.getBoundingClientRect();
         const pct = (e.clientX - rect.left) / rect.width;
         const idx = Math.floor(pct * LYRICS.length);
         const target = Math.min(Math.max(idx, 0), LYRICS.length - 1);
-        if (isPlaying) {
-            stopTimer();
-            goTo(target);
-            if (isPlaying) startTimer();
-        } else {
-            goTo(target);
-        }
-    });
-
-    // 键盘快捷键 (空格切换)
-    document.addEventListener(&#39;keydown&#39;, (e) =&gt; {
-        if (e.target.tagName === &#39;INPUT&#39; || e.target.tagName === &#39;TEXTAREA&#39;) return;
-        if (e.code === &#39;Space&#39;) {
-            e.preventDefault();
-            togglePlay();
-        }
-        if (e.code === &#39;ArrowRight&#39;) {
-            e.preventDefault();
-            nextBtn.click();
-        }
-        if (e.code === &#39;ArrowLeft&#39;) {
-            e.preventDefault();
-            prevBtn.click();
-        }
-    });
-
-    // 点击卡片暂停/继续 (方便操作)
-    document.getElementById(&#39;playerCard&#39;).addEventListener(&#39;click&#39;, (e) =&gt; {
-        // 排除按钮点击
-        if (e.target.closest(&#39;button&#39;) || e.target.closest(&#39;.progress-bar&#39;)) return;
-        togglePlay();
-    });
-
-    // ============================================================
-    //  12. 启动！
-    // ============================================================
-    renderLyrics();
-    updateProgress();
-    initStars();
-
-    // 延迟一点开始播放，让入场动画先走
-    setTimeout(() =&gt; {
+        stopTimer();
+        goTo(target);
         if (isPlaying) startTimer();
-    }, 500);
+      });
 
-    // 窗口变化时调整滚动
-    window.addEventListener(&#39;resize&#39;, () =&gt; {
-        setTimeout(scrollToActive, 200);
-    });
+      // 键盘快捷键（可选）
+      document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT') return;
+        if (e.code === 'Space') { e.preventDefault(); togglePlay(); }
+        if (e.code === 'ArrowRight') { e.preventDefault(); nextBtn.click(); }
+        if (e.code === 'ArrowLeft') { e.preventDefault(); prevBtn.click(); }
+      });
 
-    // 监听滚动，如果用户手动滚动，不要干扰自动滚动 (但自动滚动会接管)
-    // 但是我们不会阻止用户滚动，只是自动滚动会定期调整
+      // ---------- 初始化 ----------
+      render();
+      startTimer();
 
-    console.log(&#39;🎵 晴天 · 周杰伦  —  歌词展示已启动&#39;);
-    console.log(&#39;✨ 按 空格键 暂停/继续  |  ← → 切换歌词&#39;);
-&lt;/script&gt;
-</code></pre>
-</body>
-</html>
+      // 窗口改变时重新调整滚动
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(scrollToActive, 300);
+      });
+
+      console.log('🌤️ 晴天 · 周杰伦 — 歌词播放器已启动 (按空格暂停/继续)');
+    })();
+  </script>
+</div>
+
+
 
 <p>仙女下凡！</p>
 </div>
