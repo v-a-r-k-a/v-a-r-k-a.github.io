@@ -99,6 +99,171 @@
     </style>
 
     
+    <style>
+        :root {
+            --waline-theme-color: #9e5345; 
+            --waline-color: #9e5345; 
+            --waline-border-color: #9e5345; 
+            --waline-white: #9e5345; 
+            --waline-bgcolor-light: #efeae2;  
+        }
+        body {
+            color: #9e5345;
+            background: #e8e0c9;
+        }
+        .post-md code {
+            background: #e8e0c9;
+            color: #2e5041; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #e8e0c9;
+            color: #2e5041; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #9e5345;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #9e5345;
+        }
+        .year-font-color {
+            color: #9e5345 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #9e5345; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #9e5345;
+            color: #9e5345; 
+        }
+        .wl-btn {
+            border: 1px solid #9e5345; 
+            color:  #9e5345;  
+        }
+        .wl-btn.primary {
+            color: #efeae2; 
+        }
+        .wl-header label {
+            color: #9e5345;
+        }
+        a {
+            color: #2e5041;
+        }
+
+        .post-md a {
+            color: #2e5041;
+        }
+
+        .nav li a {
+            color: #2e5041;
+        }
+
+        .archive-main a:link {
+            color: #2e5041;
+        }
+        .archive-main a:visited {
+            color: #9c9caf; 
+        }
+
+        .archive li span {
+            color: #9e5345;
+        }
+
+        .post-main-title {
+            color: #9e5345;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #9e5345;
+        }
+
+        [data-waline] p {
+            color: #9e5345;
+        }
+        [data-waline] a {
+            color: #9e5345;
+        } 
+        .wl-sort li.active {
+            color: #9e5345;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #efeae2;
+        }
+
+        .paper {
+            background: #e8e0c9;
+        }
+
+        .index-main {
+            background: #efeae2;
+        }
+
+        .paper-main {
+            background: #efeae2;
+        }
+
+        .wl-panel {
+            background: #efeae2;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #efeae2;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #efeae2;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #efeae2;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #efeae2;
+        }
+
+    
+        .progress-wrap::after {
+            color: #9e5345; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #9e5345; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, #2e5041, #2e5041); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #9e5345; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #9e5345; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, #2e5041, #2e5041); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #9e5345; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: #2e5041;
+            border-left-color: #2e5041;
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #9e5345;
+        }
+    </style>
+
     
 
 
@@ -260,7 +425,7 @@
         <script>
           // 浏览器严格模式
           if (typeof window !== 'undefined') {
-            window.themeConfig = {"menu":{"首页":"/","文章":"/list/","关于":"/about/","标签":"/tags/","分类":"/categories/"},"showInMenu":["文章","关于","标签","分类"],"index":{"header":["我忘明月很久，明月始终望我","人山人海，人来人往","看过大海的人不会忘记海的广阔"],"hitokoto":true,"footer":"我不会告诉你任何事啊啊啊啊","titlePosition":"left","width":"middle","list":true},"footerLink":{"info":"© 1949-2026 China"},"post":{"footer":"🌊看过大海的人不会忘记海的广阔🌊","themeInfo":true,"width":"middle","titlePosition":"center"},"favicon":"/img/icon.png","isRoundedAvatar":true,"isAvatarRotating":true,"displayTitleInTab":true,"tool":{"darkMode":true,"returnToTop":true,"returnToLast":true,"topToc":true,"leftToc":true,"recentUpdatePost":false},"indexInfo":{"allWordCount":true,"allViewCount":true},"postInfo":{"updateDate":true,"wordCount":true,"readTime":true,"viewCount":true,"prevAndNextLink":{"status":true,"prevInfo":"Last Post","nextInfo":"Next Post"},"endContent":"以上"},"listInfo":{"enable":true,"hoverStyle":"underline","hoverColor":"#4f7dde","animationDuration":800},"cdn":{"enable":false,"choose":"zzko"},"color":{"enable":false,"font":"#9e5345","background":"#e8e0c9","indexBackGround":"#efeae2","postBackGround":"#efeae2","codeBackGround":"#e8e0c9","codeFont":"#2e5041","linkBeforeClick":"#2e5041","linkAfterClick":"#9c9caf"},"imageShow":{"enable":false,"background":"/img/favicon.webp"},"font":{"enable":false,"LXGWWenKai":true},"lightgallery":{"thumbnail":true,"zoom":true,"rotate":true,"autoplay":true,"fullScreen":true,"pager":"ture"},"comment":{"enable":true,"use":"waline","waline":{"serverUrl":null,"lang":"zh-CN","placeholder":"留下你的评论吧。"},"twikoo":{"envId":null,"region":null,"lang":null},"giscus":{"dataRepo":null,"dataRepoId":null,"dataCategory":null,"dataCategoryId":null,"dataMapping":"pathname","dataTerm":null,"dataStrict":"0","dataReactionsEnabled":"1","dataEmitMetadata":"0","dataInputPosition":"bottom","dataTheme":"preferred_color_scheme","dataLang":"zh-CN","dataLoading":null,"crossorigin":"anonymous","async":true},"artalk":{"server":null}},"inject":{"css":"css/custom.css"},"baseElement":{"href":null,"target":null},"version":"v2.0.1"};
+            window.themeConfig = {"menu":{"首页":"/","文章":"/list/","关于":"/about/","标签":"/tags/","分类":"/categories/"},"showInMenu":["文章","关于","标签","分类"],"index":{"header":["我忘明月很久，明月始终望我","人山人海，人来人往","看过大海的人不会忘记海的广阔"],"hitokoto":true,"footer":"我不会告诉你任何事啊啊啊啊","titlePosition":"left","width":"middle","list":true},"footerLink":{"info":"© 1949-2026 China"},"post":{"footer":"🌊看过大海的人不会忘记海的广阔🌊","themeInfo":true,"width":"middle","titlePosition":"center"},"favicon":"/img/icon.png","isRoundedAvatar":true,"isAvatarRotating":true,"displayTitleInTab":true,"tool":{"darkMode":true,"returnToTop":true,"returnToLast":true,"topToc":true,"leftToc":true,"recentUpdatePost":false},"indexInfo":{"allWordCount":true,"allViewCount":true},"postInfo":{"updateDate":true,"wordCount":true,"readTime":true,"viewCount":true,"prevAndNextLink":{"status":true,"prevInfo":"Last Post","nextInfo":"Next Post"},"endContent":"以上"},"listInfo":{"enable":true,"hoverStyle":"underline","hoverColor":"#4f7dde","animationDuration":800},"cdn":{"enable":false,"choose":"zzko"},"color":{"enable":true,"font":"#9e5345","background":"#e8e0c9","indexBackGround":"#efeae2","postBackGround":"#efeae2","codeBackGround":"#e8e0c9","codeFont":"#2e5041","linkBeforeClick":"#2e5041","linkAfterClick":"#9c9caf"},"imageShow":{"enable":false,"background":"/img/favicon.webp"},"font":{"enable":false,"LXGWWenKai":true},"lightgallery":{"thumbnail":true,"zoom":true,"rotate":true,"autoplay":true,"fullScreen":true,"pager":"ture"},"comment":{"enable":true,"use":"waline","waline":{"serverUrl":null,"lang":"zh-CN","placeholder":"留下你的评论吧。"},"twikoo":{"envId":null,"region":null,"lang":null},"giscus":{"dataRepo":null,"dataRepoId":null,"dataCategory":null,"dataCategoryId":null,"dataMapping":"pathname","dataTerm":null,"dataStrict":"0","dataReactionsEnabled":"1","dataEmitMetadata":"0","dataInputPosition":"bottom","dataTheme":"preferred_color_scheme","dataLang":"zh-CN","dataLoading":null,"crossorigin":"anonymous","async":true},"artalk":{"server":null}},"inject":{"css":"css/custom.css"},"baseElement":{"href":null,"target":null},"version":"v2.0.1"};
           }
           document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.archive-title').forEach(el => {
